@@ -12,6 +12,7 @@
   },
   "mappings": {
     "_default_": {
+      "numeric_detection": true,
       "dynamic_templates": [
         {
           "string_fields": {
@@ -74,7 +75,7 @@
           "type": "keyword"
         },
         "catdesc": {
-          "type": "integer"
+          "type": "keyword"
         },
         "checksum": {
           "type": "keyword"
@@ -95,7 +96,7 @@
           "type": "integer"
         },
         "craction": {
-          "type": "integer"
+          "type": "long"
         },
         "crlevel": {
           "type": "keyword"
@@ -155,6 +156,9 @@
           "type": "keyword"
         },
         "eventid": {
+          "type": "keyword"
+        },
+        "eventtype": {
           "type": "keyword"
         },
         "filename": {
@@ -352,6 +356,9 @@
         "quarskip": {
           "type": "keyword"
         },
+        "rcvd": {
+          "type": "long"
+        },
         "rcvdbyte": {
           "type": "long"
         },
@@ -372,6 +379,9 @@
         },
         "reqtype": {
           "type": "keyword"
+        },
+        "sent": {
+          "type": "long"
         },
         "sentbyte": {
           "type": "long"
@@ -518,7 +528,7 @@
           "type": "keyword"
         },
         "vd": {
-          "type": "keyword",
+          "type": "keyword"
         },
         "virus": {
           "type": "keyword"
