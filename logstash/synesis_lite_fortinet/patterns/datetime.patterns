@@ -1,0 +1,4 @@
+# Examples:
+#   Jan 15 18:52:50
+#   Jan 15 18:59:43 2017
+KOIOSTIMESTAMP %{MONTH} +%{MONTHDAY} %{TIME}( +%{YEAR})?

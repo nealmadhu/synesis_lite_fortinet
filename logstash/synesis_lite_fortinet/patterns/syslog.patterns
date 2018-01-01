@@ -1,0 +1,30 @@
+# Syslog priority
+# Examples:
+#   <14>
+KOIOSSYSLOGPRIORITY (?:<%{INT:syslog_pri}>\s*)?
+
+# Looks for multiple possible timestamp formats commonly used for syslog messages.
+KOIOSSYSLOGTIMESTAMP (?:%{TIMESTAMP_ISO8601:[@metadata][syslog_timestamp]}|%{KOIOSTIMESTAMP:[@metadata][syslog_timestamp]})\s+
+
+# Syslog facility and severity
+# Examples:
+#   Local7.Notice
+KOIOSSYSLOGFACSEVINT \b<%{NONNEGINT:syslog_facility_code}.%{NONNEGINT:syslog_severity_code}>\b
+KOIOSSYSLOGFACSEVTEXT \b(?<syslog_facility>[A-Za-z][a-z0-9]+)\.%{LOGLEVEL:syslog_severity}\b
+KOIOSSYSLOGFACILITYSEVERITY (?:%{KOIOSSYSLOGFACSEVTEXT}\s+|%{KOIOSSYSLOGFACSEVINT}\s+)?
+
+# Syslog IP or hostname
+KOIOSSYSLOGIPORHOST (?:%{IP:[node][ipaddr]}|\[%{IPV4:[node][ipaddr]}.%{NONNEGINT}.%{NONNEGINT}\]|%{HOSTNAME:[node][hostname]})\s+
+
+# Syslog process anme and/or PID
+# Examples:
+#   496:
+#   kernel:
+#   rpd[1241]:
+KOIOSSYSLOGPROCESS (?:%{PROG:[log][process]}(?:\[%{INT:[log][pid]}\]|%{INT:[log][pid]})?\s?:\s*)?
+
+# Used to ignore artifacts in some message formats.
+KOIOSSYSLOGJUNKINT (?:%{INT}\s+)?
+
+# This is the top level grok pattern for initial recognition and parsing of syslog messages.
+KOIOSSYSLOGBASEPARSER %{KOIOSSYSLOGPRIORITY}%{KOIOSSYSLOGTIMESTAMP}%{KOIOSSYSLOGFACILITYSEVERITY}%{KOIOSSYSLOGJUNKINT}%{KOIOSSYSLOGIPORHOST}%{KOIOSSYSLOGPROCESS}%{GREEDYDATA:[log][message]}

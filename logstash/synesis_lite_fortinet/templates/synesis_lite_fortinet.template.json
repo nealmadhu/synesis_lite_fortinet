@@ -1,0 +1,533 @@
+{
+  "order": 0,
+  "version": 2018010101,
+  "template": "fortinet-*",
+  "settings": {
+    "index": {
+      "number_of_shards": 2,
+      "number_of_replicas": 1,
+      "refresh_interval": "5s",
+      "codec": "best_compression"
+    }
+  },
+  "mappings": {
+    "_default_": {
+      "dynamic_templates": [
+        {
+          "string_fields": {
+            "mapping": {
+              "norms": false,
+              "type": "keyword"
+            },
+            "match_mapping_type": "string",
+            "match": "*"
+          }
+        }
+      ],
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "@version": {
+          "type": "keyword"
+        },
+        "action": {
+          "type": "keyword"
+        },
+        "agent": {
+          "type": "keyword"
+        },
+        "analyticscksum": {
+          "type": "keyword"
+        },
+        "analyticssubmit": {
+          "type": "boolean"
+        },
+        "app": {
+          "type": "keyword"
+        },
+        "appact": {
+          "type": "keyword"
+        },
+        "appcat": {
+          "type": "keyword"
+        },
+        "appid": {
+          "type": "keyword"
+        },
+        "applist": {
+          "type": "keyword"
+        },
+        "apprisk": {
+          "type": "keyword"
+        },
+        "attachment": {
+          "type": "keyword"
+        },
+        "attack": {
+          "type": "keyword"
+        },
+        "attackid": {
+          "type": "keyword"
+        },
+        "cat": {
+          "type": "keyword"
+        },
+        "catdesc": {
+          "type": "integer"
+        },
+        "checksum": {
+          "type": "keyword"
+        },
+        "client_addr": {
+          "type": "ip"
+        },
+        "client_host": {
+          "type": "keyword"
+        },
+        "count": {
+          "type": "integer"
+        },
+        "countapp": {
+          "type": "integer"
+        },
+        "countav": {
+          "type": "integer"
+        },
+        "craction": {
+          "type": "integer"
+        },
+        "crlevel": {
+          "type": "keyword"
+        },
+        "crscore": {
+          "type": "integer"
+        },
+        "date": {
+          "type": "keyword"
+        },
+        "device_id": {
+          "type": "keyword"
+        },
+        "devname": {
+          "type": "keyword"
+        },
+        "devtype": {
+          "type": "keyword"
+        },
+        "direction": {
+          "type": "keyword"
+        },
+        "dst_host": {
+          "type": "keyword"
+        },
+        "dst_locality": {
+          "type": "keyword"
+        },
+        "dstcountry": {
+          "type": "keyword"
+        },
+        "dstintf": {
+          "type": "keyword"
+        },
+        "dstintfrole": {
+          "type": "keyword"
+        },
+        "dstip": {
+          "type": "ip"
+        },
+        "dstname": {
+          "type": "keyword"
+        },
+        "dstport": {
+          "type": "integer"
+        },
+        "dstport_name": {
+          "type": "keyword"
+        },
+        "dtype": {
+          "type": "keyword"
+        },
+        "duration": {
+          "type": "long"
+        },
+        "epoch": {
+          "type": "keyword"
+        },
+        "eventid": {
+          "type": "keyword"
+        },
+        "filename": {
+          "type": "keyword"
+        },
+        "filesize": {
+          "type": "keyword"
+        },
+        "filetype": {
+          "type": "keyword"
+        },
+        "filtercat": {
+          "type": "keyword"
+        },
+        "filteridx": {
+          "type": "keyword"
+        },
+        "filtertype": {
+          "type": "keyword"
+        },
+        "from": {
+          "type": "keyword"
+        },
+        "geoip": {
+          "dynamic": true,
+          "properties": {
+            "autonomous_system": {
+              "type": "keyword"
+            },
+            "city_name": {
+              "type": "keyword"
+            },
+            "country_name": {
+              "type": "keyword"
+            },
+            "isp": {
+              "type": "keyword"
+            },
+            "location": {
+              "type": "geo_point"
+            },
+            "organization": {
+              "type": "keyword"
+            }
+          }
+        },
+        "geoip_dst": {
+          "dynamic": true,
+          "properties": {
+            "autonomous_system": {
+              "type": "keyword"
+            },
+            "city_name": {
+              "type": "keyword"
+            },
+            "country_name": {
+              "type": "keyword"
+            },
+            "isp": {
+              "type": "keyword"
+            },
+            "location": {
+              "type": "geo_point"
+            },
+            "organization": {
+              "type": "keyword"
+            }
+          }
+        },
+        "geoip_src": {
+          "dynamic": true,
+          "properties": {
+            "autonomous_system": {
+              "type": "keyword"
+            },
+            "city_name": {
+              "type": "keyword"
+            },
+            "country_name": {
+              "type": "keyword"
+            },
+            "isp": {
+              "type": "keyword"
+            },
+            "location": {
+              "type": "geo_point"
+            },
+            "organization": {
+              "type": "keyword"
+            }
+          }
+        },
+        "group": {
+          "type": "keyword"
+        },
+        "host": {
+          "type": "keyword"
+        },
+        "hostname": {
+          "type": "keyword"
+        },
+        "icmpcode": {
+          "type": "keyword"
+        },
+        "icmptype": {
+          "type": "keyword"
+        },
+        "level": {
+          "type": "keyword"
+        },
+        "log": {
+          "dynamic": true,
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "keyword"
+            },
+            "pid": {
+              "type": "integer"
+            },
+            "process": {
+              "type": "keyword"
+            },
+            "severity": {
+              "type": "keyword"
+            }
+          }
+        },
+        "log_id": {
+          "type": "keyword"
+        },
+        "logdesc": {
+          "type": "keyword"
+        },
+        "logtime": {
+          "type": "long"
+        },
+        "mastersrcmac": {
+          "type": "keyword"
+        },
+        "message": {
+          "type" : "text"
+        },
+        "method": {
+          "type": "keyword"
+        },
+        "msg": {
+          "type": "keyword"
+        },
+        "new_status": {
+          "type": "keyword"
+        },
+        "node": {
+          "dynamic": true,
+          "type": "object",
+          "properties": {
+            "ipaddr": {
+              "type": "ip"
+            },
+            "hostname": {
+              "type": "keyword"
+            }
+          }
+        },
+        "old_status": {
+          "type": "keyword"
+        },
+        "osname": {
+          "type": "keyword"
+        },
+        "policyid": {
+          "type": "keyword"
+        },
+        "policymode": {
+          "type": "keyword"
+        },
+        "policytype": {
+          "type": "keyword"
+        },
+        "poluuid": {
+          "type": "keyword"
+        },
+        "pri": {
+          "type": "keyword"
+        },
+        "profile": {
+          "type": "keyword"
+        },
+        "proto": {
+          "type": "integer"
+        },
+        "proto_name": {
+          "type": "keyword"
+        },
+        "quarskip": {
+          "type": "keyword"
+        },
+        "rcvdbyte": {
+          "type": "long"
+        },
+        "rcvdpkt": {
+          "type": "long"
+        },
+        "reason": {
+          "type": "keyword"
+        },
+        "recipient": {
+          "type": "keyword"
+        },
+        "ref": {
+          "type": "keyword"
+        },
+        "remote_ip": {
+          "type": "ip"
+        },
+        "reqtype": {
+          "type": "keyword"
+        },
+        "sentbyte": {
+          "type": "long"
+        },
+        "sentpkt": {
+          "type": "long"
+        },
+        "server_addr": {
+          "type": "ip"
+        },
+        "server_host": {
+          "type": "keyword"
+        },
+        "service": {
+          "type": "keyword"
+        },
+        "service_name": {
+          "type": "keyword"
+        },
+        "service_port": {
+          "type": "integer"
+        },
+        "sessionid": {
+          "type": "keyword"
+        },
+        "severity": {
+          "type": "keyword"
+        },
+        "sn": {
+          "type": "keyword"
+        },
+        "srccountry": {
+          "type": "keyword"
+        },
+        "src_host": {
+          "type": "keyword"
+        },
+        "src_locality": {
+          "type": "keyword"
+        },
+        "srcintf": {
+          "type": "keyword"
+        },
+        "srcintfrole": {
+          "type": "keyword"
+        },
+        "srcip": {
+          "type": "ip"
+        },
+        "srcmac": {
+          "type": "keyword"
+        },
+        "srcname": {
+          "type": "keyword"
+        },
+        "srcport": {
+          "type": "integer"
+        },
+        "srcport_name": {
+          "type": "keyword"
+        },
+        "srcserver": {
+          "type": "keyword"
+        },
+        "status": {
+          "type": "keyword"
+        },
+        "subtype": {
+          "type": "keyword"
+        },
+        "syslog": {
+          "dynamic": true,
+          "type": "object",
+          "properties": {
+            "facility": {
+              "type": "keyword"
+            },
+            "facility_code": {
+              "type": "integer"
+            },
+            "pri": {
+              "type": "integer"
+            },
+            "severity": {
+              "type": "keyword"
+            },
+            "severity_code": {
+              "type": "integer"
+            },
+            "timestamp": {
+              "type": "date"
+            }
+          }
+        },
+        "time": {
+          "type": "keyword"
+        },
+        "to": {
+          "type": "keyword"
+        },
+        "traffic_locality": {
+          "type": "keyword"
+        },
+        "trandisp": {
+          "type": "keyword"
+        },
+        "tranip": {
+          "type": "ip"
+        },
+        "tranport": {
+          "type": "keyword"
+        },
+        "transip": {
+          "type": "ip"
+        },
+        "transport": {
+          "type": "integer"
+        },
+        "tunnel_id": {
+          "type": "keyword"
+        },
+        "tunnel_ip": {
+          "type": "ip"
+        },
+        "tunnel_type": {
+          "type": "keyword"
+        },
+        "type": {
+          "type": "keyword"
+        },
+        "ui": {
+          "type": "keyword"
+        },
+        "url": {
+          "type": "keyword"
+        },
+        "user": {
+          "type": "keyword"
+        },
+        "utmaction": {
+          "type": "keyword"
+        },
+        "utmref": {
+          "type": "keyword"
+        },
+        "vd": {
+          "type": "keyword",
+        },
+        "virus": {
+          "type": "keyword"
+        },
+        "virusid": {
+          "type": "keyword"    
+        }
+      }
+    }
+  },
+  "aliases": {}
+}
